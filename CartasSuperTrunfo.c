@@ -1,5 +1,6 @@
-#include <stdio.h> // Inclui a biblioteca padrão de entrada e saída
+#include <stdio.h>  // Inclui a biblioteca padrão de entrada e saída
 #include <string.h> // Inclui a biblioteca para manipulação de strings
+#include <stdlib.h> // Inclui a biblioteca padrão
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
@@ -7,6 +8,7 @@
 // Siga os comentários para implementar cada parte do desafio.
 // Teste larissa
 
+// Definição da estrutura Cartas
 typedef struct
 {
     int codigo;
@@ -15,16 +17,16 @@ typedef struct
     float area;
     float pib;
     int pontos_turisticos;
-} Carta;
+} Cartas;
 
-void ImprimePessoa(Carta c1)
+void imprimeDadosCarta(Cartas carta) // Função para imprimir os dados da carta
 {
-    printf("Código: %d\n", c1.codigo);
-    printf("Nome: %s\n", c1.nome);
-    printf("População: %d\n", c1.populacao);
-    printf("Área: %.2f\n", c1.area);
-    printf("PIB: %.2f\n", c1.pib);
-    printf("Pontos Turísticos: %d\n", c1.pontos_turisticos);
+    printf("Código: %d\n", carta.codigo);
+    printf("Nome: %s\n", carta.nome);
+    printf("População: %d\n", carta.populacao);
+    printf("Área: %.2f\n", carta.area);
+    printf("PIB: %.2f\n", carta.pib);
+    printf("Pontos Turísticos: %d\n", carta.pontos_turisticos);
 }
 
 int main()
@@ -35,42 +37,69 @@ int main()
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    Carta c1;
 
-    printf("Digite o código da cidade: ");
-    scanf("%d", &c1.codigo);
+    // Sugestão: Utilize um vetor de estruturas para armazenar as cartas cadastradas.
+    // Exemplo: Carta cartas[4];
 
-    getchar(); // Consome o \n que ficou no buffer
+    int quantidadeCartas; // Variável para armazenar a quantidade de cartas que o usuário deseja cadastrar
 
-    printf("Digite o nome da cidade: ");
-    // fgets é utilizado para capturar strings com espaços, sizeof(c1.nome) é o tamanho máximo da string e stdin é a origem da string
-    fgets(c1.nome, sizeof(c1.nome), stdin); 
-    // strcspn é uma função que retorna o tamanho da string até o caractere especificado, neste caso, o \n
-    c1.nome[strcspn(c1.nome, "\n")] = 0; // Substitui o \n por \0
+    printf("Digite a quantidade de carta(s) que deseja cadastrar(ex.: 1 , 2, 3...) : ");
+    scanf("%d", &quantidadeCartas);
 
-    printf("Digite a população da cidade: ");
-    scanf("%d", &c1.populacao);
+    printf("\n");
 
-    getchar();
+    Cartas *carta = (Cartas *)malloc(quantidadeCartas * sizeof(Cartas)); // Alocando memória para o vetor de cartas
 
-    printf("Digite a área da cidade: ");
-    scanf("%f", &c1.area);
+    if (carta == NULL) // Verifica se a memória foi alocada corretamente, caso contrário, exibe uma mensagem de erro
+    {
+        printf("Erro ao alocar memória");
+        return 1;
+    }
 
-    getchar();
+    printf("-------- Cadastro das cartas --------\n");
 
-    printf("Digite o PIB da cidade: ");
-    scanf("%f", &c1.pib);
+    // Laço para cadastrar as cartas
+    for (int i = 0; i < quantidadeCartas; i++)
+    {
+        printf("Carta %d\n", i + 1);
 
-    getchar();
+        printf("Digite o código da cidade: ");
+        scanf("%d", &carta[i].codigo);
+        getchar(); // Limpa o buffer
 
-    printf("Digite o número de pontos turísticos da cidade: ");
-    scanf("%d", &c1.pontos_turisticos);
+        printf("Digite o nome da cidade: ");
+        fgets(carta[i].nome, sizeof(carta[i].nome), stdin); // Lê a string com espaços
+        carta[i].nome[strcspn(carta[i].nome, "\n")] = 0;    // Remove \n
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-    printf("\n-------- Dados da carta --------\n");
-    ImprimePessoa(c1);
+        printf("Digite a população da cidade: ");
+        scanf("%d", &carta[i].populacao);
+
+        printf("Digite a área da cidade: ");
+        scanf("%f", &carta[i].area);
+
+        printf("Digite o PIB da cidade: ");
+        scanf("%f", &carta[i].pib);
+
+        printf("Digite o número de pontos turísticos da cidade: ");
+        scanf("%d", &carta[i].pontos_turisticos);
+        getchar(); // Limpa o buffer
+
+        printf("\n");
+    }
+
+    printf("\n-------- Cartas cadastradas --------\n");
+
+    // Laço para imprimir os dados das cartas
+    for (int i = 0; i < quantidadeCartas; i++)
+    {
+        Cartas cartaAtual = carta[i];  // Atribui a carta atual a variável cartaAtual
+        printf("\nCarta %d\n", i + 1); // Imprime o número da carta
+        imprimeDadosCarta(cartaAtual); // Chama a função imprimeDadosCarta para imprimir os dados da carta
+    }
+
+    printf("\n");
+
+    free(carta); // Libera a memória alocada no vetor de cartas
 
     return 0;
 }
