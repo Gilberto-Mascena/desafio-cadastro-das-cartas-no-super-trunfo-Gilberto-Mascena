@@ -50,7 +50,7 @@ int main()
 
     Cartas *carta = (Cartas *)malloc(quantidadeCartas * sizeof(Cartas)); // Alocando memória para o vetor de cartas
 
-    if (carta == NULL) // Verifica se a memória foi alocada corretamente, caso contrário, exibe uma mensagem de erro
+    if (carta == NULL) // If para testar se a memória foi alocada corretamente, caso contrário, exibe uma mensagem de erro
     {
         printf("Erro ao alocar memória");
         return 1;
