@@ -53,22 +53,20 @@ int main()
     // Sugestão: Utilize um vetor de estruturas para armazenar as cartas cadastradas.
     // Exemplo: Carta cartas[4];
 
-    exbibeCabecalho(); // Chama a função para exibir o cabeçalho
-    // Solicita ao usuário a quantidade de cartas que deseja cadastrar
-    // e armazena na variável quantidadeCartas
-
+    exbibeCabecalho();               // Chama a função para exibir o cabeçalho
+  
     Cartas *carta = (Cartas *)malloc(quantidadeCartas * sizeof(Cartas)); // Alocando memória para o vetor de cartas
 
     if (carta == NULL) // If para testar se a memória foi alocada corretamente, caso contrário, exibe uma mensagem de erro
     {
         printf("Erro ao alocar memória");
         return 1;
-    }    
+    }
 
     // Laço para cadastrar as cartas
     for (int i = 0; i < quantidadeCartas; i++)
     {
-        printf("Carta %d\n", i + 1);
+        printf("\nCarta #%d\n", i + 1);
 
         printf("Digite o código da cidade: ");
         scanf("%d", &carta[i].codigo);
@@ -100,7 +98,7 @@ int main()
     for (int i = 0; i < quantidadeCartas; i++)
     {
         Cartas cartaAtual = carta[i];  // Atribui a carta atual a variável cartaAtual
-        printf("\nCarta %d\n", i + 1); // Imprime o número da carta
+        printf("\nCarta #%d\n", i + 1); // Imprime o número da carta
         imprimeDadosCarta(cartaAtual); // Chama a função imprimeDadosCarta para imprimir os dados da carta
     }
 
