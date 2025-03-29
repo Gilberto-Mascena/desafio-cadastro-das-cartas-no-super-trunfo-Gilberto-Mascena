@@ -19,6 +19,18 @@ typedef struct
     int pontos_turisticos;
 } Cartas;
 
+int quantidadeCartas; // Variável para armazenar a quantidade de cartas que o usuário deseja cadastrar
+
+void exbibeCabecalho() // Função para exibir o cabeçalho
+{
+    printf("\n-------- Cartas Super Trunfo --------\n");
+    printf("Código | Nome da Cidade | População | Área | PIB | Pontos Turísticos\n\n");
+    printf("Digite a quantidade de carta(s) que deseja cadastrar(ex.: 1 , 2, 3...) : ");
+    scanf("%d", &quantidadeCartas);
+    printf("----------------------------------------------------------------------\n");
+    printf("\n-------- Cadastro das cartas --------\n");
+}
+
 void imprimeDadosCarta(Cartas carta) // Função para imprimir os dados da carta
 {
     printf("Código: %d\n", carta.codigo);
@@ -41,12 +53,9 @@ int main()
     // Sugestão: Utilize um vetor de estruturas para armazenar as cartas cadastradas.
     // Exemplo: Carta cartas[4];
 
-    int quantidadeCartas; // Variável para armazenar a quantidade de cartas que o usuário deseja cadastrar
-
-    printf("Digite a quantidade de carta(s) que deseja cadastrar(ex.: 1 , 2, 3...) : ");
-    scanf("%d", &quantidadeCartas);
-
-    printf("\n");
+    exbibeCabecalho(); // Chama a função para exibir o cabeçalho
+    // Solicita ao usuário a quantidade de cartas que deseja cadastrar
+    // e armazena na variável quantidadeCartas
 
     Cartas *carta = (Cartas *)malloc(quantidadeCartas * sizeof(Cartas)); // Alocando memória para o vetor de cartas
 
@@ -54,9 +63,7 @@ int main()
     {
         printf("Erro ao alocar memória");
         return 1;
-    }
-
-    printf("-------- Cadastro das cartas --------\n");
+    }    
 
     // Laço para cadastrar as cartas
     for (int i = 0; i < quantidadeCartas; i++)
