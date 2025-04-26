@@ -2,11 +2,13 @@
 #include <string.h> // Inclui a biblioteca para manipulação de strings
 #include <stdlib.h> // Inclui a biblioteca padrão
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-// Teste larissa
+/*
+* Desafio Super Trunfo - Países
+* Tema 1 - Cadastro das Cartas
+* Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
+* Siga os comentários para implementar cada parte do desafio.
+* Teste larissa
+*/
 
 // Definição da estrutura Cartas
 typedef struct
@@ -43,15 +45,21 @@ void imprimeDadosCarta(Cartas carta) // Função para imprimir os dados da carta
 
 int main()
 {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
+    /*
+    * Sugestão: Defina variáveis separadas para cada atributo da cidade.
+    * Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
+    */ 
 
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
+    /*
+    * Cadastro das Cartas:
+    * Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
+    * Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
+    */ 
 
-    // Sugestão: Utilize um vetor de estruturas para armazenar as cartas cadastradas.
-    // Exemplo: Carta cartas[4];
+    /*
+    * Sugestão: Utilize um vetor de estruturas para armazenar as cartas cadastradas.
+    * Exemplo: Carta cartas[4];
+    */
 
     exbibeCabecalho();               // Chama a função para exibir o cabeçalho
   
